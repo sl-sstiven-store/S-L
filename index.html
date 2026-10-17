@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="S&L. SSTIVEN — encuentra productos para tu día a día. Compra fácil por WhatsApp.">
+  <title>S&L. SSTIVEN | Tienda online</title>
+  <style>
+    :root{--black:#101010;--white:#fff;--paper:#f5f5f3;--muted:#737373;--line:#e4e4e1;--accent:#c8a96b}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--white);color:var(--black)}
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    .announcement{background:var(--black);color:white;text-align:center;padding:10px 14px;font-size:12px;letter-spacing:.12em}
+    header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1180px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{font-size:20px;font-weight:800;letter-spacing:.04em;white-space:nowrap}.brand span{font-weight:400;color:#777}
+    .navlinks{display:flex;align-items:center;gap:22px;font-size:13px}
+    .navlinks a:hover{opacity:.6}
+    .cart-btn{border:1px solid var(--black);background:var(--black);color:white;padding:11px 14px;border-radius:2px;font-size:12px}
+    .hero{background:var(--black);color:white;min-height:410px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center}
+    .hero-copy{padding:64px max(24px,calc((100vw - 1136px)/2))}
+    .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:bold}
+    h1{font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-.055em;margin:18px 0}
+    .hero p{max-width:440px;color:#d0d0d0;line-height:1.7;font-size:15px}
+    .primary{display:inline-block;background:white;color:black;padding:14px 19px;border:1px solid white;font-size:12px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;margin-top:15px}
+    .hero-art{height:100%;min-height:300px;display:flex;align-items:center;justify-content:center;padding:35px;background:radial-gradient(circle at 50% 50%,#333 0,#171717 55%,#101010 75%)}
+    .monogram{width:min(300px,70vw);aspect-ratio:1;border:1px solid #555;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative}
+    .monogram:before,.monogram:after{content:"";position:absolute;background:#555}
+    .monogram:before{height:1px;width:120%;left:-10%}.monogram:after{width:1px;height:120%;top:-10%}
+    .monogram strong{font-size:65px;letter-spacing:-.08em;z-index:1;background:#191919;padding:15px}
+    .section{max-width:1180px;margin:auto;padding:58px 22px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}
+    h2{font-size:30px;letter-spacing:-.04em;margin:0 0 8px}
+    .sub{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
+    .tools{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}
+    .search{flex:1;min-width:190px;padding:13px 14px;border:1px solid var(--line);background:#fafafa;outline:none}
+    .search:focus{border-color:#888}
+    .filter{padding:12px 14px;border:1px solid var(--line);background:white;min-width:155px}
+    .categories{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+    .chip{padding:9px 13px;border:1px solid var(--line);background:white;border-radius:30px;font-size:12px}
+    .chip.active,.chip:hover{background:var(--black);color:white;border-color:var(--black)}
+    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .product{border:1px solid var(--line);background:white;min-width:0;transition:transform .2s,box-shadow .2s}
+    .product:hover{transform:translateY(-3px);box-shadow:0 12px 28px #0000000b}
+    .product-art{aspect-ratio:4/3;background:var(--paper);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .product-art svg{width:68%;height:68%;max-width:170px}
+    .tag{position:absolute;top:12px;left:12px;background:white;padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:.1em}
+    .product-info{padding:15px}
+    .category-label{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}
+    .product h3{font-size:15px;margin:8px 0}
+    .desc{font-size:12px;color:var(--muted);line-height:1.5;min-height:36px}
+    .product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:14px}
+    .price{font-weight:800;font-size:16px}
+    .add{border:1px solid var(--black);background:var(--black);color:white;padding:9px 11px;font-size:11px}
+    .add:hover{background:white;color:black}
+    .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:45px 10px}
+    .benefits{background:var(--paper)}
+    .benefit-grid{max-width:1180px;margin:auto;padding:32px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .benefit{display:flex;gap:13px;align-items:flex-start}.benefit-icon{font-size:22px}.benefit strong{font-size:13px}.benefit p{font-size:12px;color:var(--muted);line-height:1.5;margin:6px 0 0}
+    footer{background:#101010;color:white;padding:38px 22px}
+    .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    footer p{font-size:12px;color:#aaa;line-height:1.7;margin:6px 0}
+    .footer-brand{font-size:20px;font-weight:800}
+    .wa-float{position:fixed;right:18px;bottom:18px;z-index:20;background:#171717;color:white;padding:14px 17px;border-radius:40px;box-shadow:0 8px 25px #0003;font-size:12px;font-weight:bold;border:1px solid #555}
+    .overlay{position:fixed;inset:0;background:#0008;z-index:30;display:none}
+    .overlay.open{display:block}
+    .drawer{position:fixed;right:0;top:0;height:100%;width:min(430px,100%);background:white;z-index:31;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column}
+    .drawer.open{transform:translateX(0)}
+    .drawer-head{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+    .drawer-head h2{font-size:22px;margin:0}
+    .close{border:0;background:none;font-size:26px}
+    .cart-items{padding:18px 22px;overflow:auto;flex:1}
+    .cart-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:15px 0;border-bottom:1px solid var(--line)}
+    .cart-row strong{font-size:13px}.cart-row small{display:block;color:var(--muted);margin-top:5px}
+    .qty{display:flex;align-items:center;gap:8px;margin-top:10px}
+    .qty button{width:25px;height:25px;border:1px solid var(--line);background:white}
+    .remove{font-size:11px;color:#777;border:0;background:none;margin-left:5px}
+    .drawer-foot{padding:20px 22px;border-top:1px solid var(--line)}
+    .total{display:flex;justify-content:space-between;font-weight:bold;margin-bottom:15px}
+    .checkout{width:100%;padding:15px;background:var(--black);color:white;border:0;font-weight:bold;letter-spacing:.04em}
+    .checkout:disabled{opacity:.4;cursor:not-allowed}
+    .hint{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}
+    .toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:#111;color:white;padding:12px 18px;font-size:12px;z-index:50;display:none}
+    .toast.show{display:block}
+    @media(max-width:850px){.hero{grid-template-columns:1fr}.hero-copy{padding:50px 24px 25px}.hero-art{min-height:240px;padding:25px}.monogram{width:190px}.monogram strong{font-size:48px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{gap:12px}.navlinks a{display:none}}
+    @media(max-width:420px){.section{padding:42px 14px}.nav{padding:14px}.brand{font-size:16px}.cart-btn{padding:10px;font-size:11px}.grid{gap:10px}.product-info{padding:11px}.product h3{font-size:13px}.price{font-size:14px}.add{padding:8px}.benefit-grid{grid-template-columns:1fr;padding:28px 18px}.section-head{display:block}.section-head .sub{margin-top:8px}}
+  </style>
+</head>
+<body>
+  <div class="announcement">ESTILO · VARIEDAD · COMPRA FÁCIL POR WHATSAPP</div>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#" aria-label="Inicio">S&L. <span>SSTIVEN</span></a>
+      <div class="navlinks"><a href="#catalogo">Catálogo</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
+      <button class="cart-btn" id="openCart">MI CARRITO (<span id="cartCount">0</span>)</button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Descubre tu próximo favorito</div>
+        <h1>Todo lo que<br>buscas, en un lugar.</h1>
+        <p>Bienvenido a S&L. SSTIVEN. Explora nuestra selección de productos, encuentra lo que necesitas y haz tu pedido de forma sencilla.</p>
+        <a class="primary" href="#catalogo">Explorar productos&nbsp; ↗</a>
+      </div>
+      <div class="hero-art" aria-label="Logotipo S y L">
+        <div class="monogram"><strong>S&L</strong></div>
+      </div>
+    </section>
+    <section class="section" id="catalogo">
+      <div class="section-head"><div><div class="eyebrow" style="color:#777;margin-bottom:10px">Nuestra selección</div><h2>Catálogo de productos</h2><p class="sub">Encuentra algo para ti. Los productos de muestra se pueden editar.</p></div></div>
+      <div class="tools">
+        <input class="search" id="search" type="search" placeholder="Buscar productos..." aria-label="Buscar productos">
+        <select class="filter" id="sort" aria-label="Ordenar productos"><option value="featured">Orden recomendado</option><option value="low">Precio: menor a mayor</option><option value="high">Precio: mayor a menor</option></select>
+      </div>
+      <div class="categories" id="categories"></div>
+      <div class="grid" id="products"></div>
+    </section>
+    <section class="benefits" id="nosotros">
+      <div class="benefit-grid">
+        <div class="benefit"><div class="benefit-icon">◇</div><div><strong>Selección variada</strong><p>Productos para distintas necesidades en un solo lugar.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">◎</div><div><strong>Pedido sencillo</strong><p>Envía tu lista de compra por WhatsApp para confirmar disponibilidad.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">↗</div><div><strong>Atención directa</strong><p>Coordina el pago, la entrega y cualquier consulta directamente con la tienda.</p></div></div>
+      </div>
+    </section>
+  </main>
+  <footer id="contacto"><div class="footer-inner"><div><div class="footer-brand">S&L. SSTIVEN</div><p>Tu tienda, tu estilo.<br>Atención y pedidos por WhatsApp.</p></div><div><strong>¿Tienes alguna consulta?</strong><p>Escríbenos para confirmar stock, pagos y envíos.</p><a href="#" id="footerWhatsApp" style="text-decoration:underline;font-size:13px">Contactar por WhatsApp ↗</a></div><p>© <span id="year"></span> S&L. SSTIVEN. Todos los derechos reservados.</p></div></footer>
+  <button class="wa-float" id="quickWhatsApp">WhatsApp ↗</button>
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Carrito de compras" aria-modal="true" role="dialog">
+    <div class="drawer-head"><h2>Tu carrito</h2><button class="close" id="closeCart" aria-label="Cerrar carrito">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="drawer-foot"><div class="total"><span>Total estimado</span><span id="cartTotal">S/ 0.00</span></div><button class="checkout" id="checkout" disabled>REALIZAR PEDIDO POR WHATSAPP</button><div class="hint">El pedido se enviará a WhatsApp para confirmar stock, costo de envío y forma de pago. Aún no se realiza ningún cobro en esta web.</div></div>
+  </aside>
+  <div class="toast" id="toast"></div>
+<script>
+  // IMPORTANTE: cambia este número por tu WhatsApp con código de país, solo números.
+  // Perú: 51 + tu número. Ejemplo ficticio: 51987654321
+  const WHATSAPP_NUMBER = "51900000000";
+
+  // Productos de ejemplo: cambia nombres, precios, categorías y descripciones por los tuyos.
+  const productsData = [
+    {id:1,name:"Polo esencial",category:"Ropa",price:35,description:"Diseño cómodo para todos los días.",tag:"Popular",art:"shirt"},
+    {id:2,name:"Pantalón clásico",category:"Ropa",price:69,description:"Estilo versátil y fácil de combinar.",tag:"Nuevo",art:"pants"},
+    {id:3,name:"Zapatillas urbanas",category:"Calzado",price:99,description:"Un básico para completar tu estilo.",tag:"",art:"shoe"},
+    {id:4,name:"Mochila urbana",category:"Accesorios",price:59,description:"Práctica para el día a día.",tag:"",art:"bag"},
+    {id:5,name:"Audífonos inalámbricos",category:"Tecnología",price:79,description:"Disfruta tu música donde vayas.",tag:"Popular",art:"headphones"},
+    {id:6,name:"Reloj minimalista",category:"Accesorios",price:89,description:"Un detalle sobrio y elegante.",tag:"",art:"watch"},
+    {id:7,name:"Botella reutilizable",category:"Hogar",price:25,description:"Ideal para llevar contigo.",tag:"",art:"bottle"},
+    {id:8,name:"Lentes de sol",category:"Accesorios",price:39,description:"Un complemento para tu look.",tag:"Nuevo",art:"glasses"}
+  ];
+  const artSvg = {
+    shirt:`<svg viewBox="0 0 160 130" fill="none" aria-hidden="true"><path d="M53 22 69 13h22l16 9 27 18-15 23-16-10v61H57V53L41 63 26 40 53 22Z" fill="#171717"/><path d="M69 13c2 12 20 12 22 0" stroke="#777" stroke-width="2"/></svg>`,
+    pants:`<svg viewBox="0 0 160 130" fill="none" aria-hidden="true"><path d="M48 15h64l-7 100H78l-4-58-5 58H42L48 15Z" fill="#777"/><path d="M48 24h63M76 18l-2 39" stroke="#bbb" stroke-width="2"/></svg>`,
+    shoe:`<svg viewBox="0 0 160 130" fill="none" aria-hidden="true"><path d="M23 81c15 1 28-12 37-34l19 7c6 21 20 25 39 29 11 3 20 9 20 19H25c-10 0-13-15-2-21Z" fill="#fdfdfd" stroke="#222" stroke-width="4"/><path d="M57 68l24 8m-17-16 24 9m-45 25h82" stroke="#888" stroke-width="3"/></svg>`,
+    bag:`<svg viewBox="0 0 160 130" fill="none" aria-hidden="true"><rect x="39" y="36" width="82" height="78" rx="12" fill="#222"/><path d="M59 40V29a21 21 0 0 1 42 0v11" stroke="#777" stroke-width="7"/><rect x="53" y="61" width="54" height="29" rx="5" fill="#444"/><path d="M80 61v29" stroke="#777" stroke-width="2"/></svg>`,
+    headphones:`<svg viewBox="0 0 160 130" fill="none" aria-hidden="true"><path d="M43 72V56a37 37 0 0 1 74 0v16" stroke="#171717" stroke-width="12" stroke-linecap="round"/><rect x="31" y="64" width="25" height="43" rx="9" fill="#222"/><rect x="104" y="64" width="25" height="43" rx="9" fill="#222"/><path d="M38 84h11m63 0h11" stroke="#888" stroke-width="2"/></svg>`,
+    watch:`<svg viewBox="0 0 160 130" fill="none" aria-hidden="true"><path d="M66 15h28l5 30H61l5-30Zm-5 70h38l-5 30H66l-5-30Z" fill="#777"/><circle cx="80" cy="65" r="30" fill="#171717" stroke="#777" stroke-width="4"/><circle cx="80" cy="65" r="23" stroke="#aaa"/><path d="M80 47v19l13 8" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>`,
+    bottle:`<svg viewBox="0 0 160 130" fill="none" aria-hidden="true"><rect x="65" y="13" width="30" height="14" rx="3" fill="#222"/><path d="M67 27h26v13l13 15v55a7 7 0 0 1-7 7H61a7 7 0 0 1-7-7V55l13-15V27Z" fill="#d7d7d2" stroke="#555" stroke-width="3"/><path d="M57 66h46" stroke="#999" stroke-width="3"/></svg>`,
+    glasses:`<svg viewBox="0 0 160 130" fill="none" aria-hidden="true"><path d="M20 51h18l8 35c2 8 9 13 18 12 11-1 17-10 20-24l3-13h-5l3 13c3 14 9 23 20 24 9 1 16-4 18-12l8-35h18" stroke="#222" stroke-width="6" stroke-linejoin="round"/><path d="M47 61h35m-3 0h6m4 0h34" stroke="#777" stroke-width="2"/></svg>`
+  };
+  let cart = {};
+  let activeCategory = "Todos";
+  const money = n => "S/ " + Number(n).toFixed(2);
+  const categoriesEl = document.getElementById("categories");
+  const productsEl = document.getElementById("products");
+  const searchEl = document.getElementById("search");
+  const sortEl = document.getElementById("sort");
+  const toastEl = document.getElementById("toast");
+  function toast(msg){toastEl.textContent=msg;toastEl.classList.add("show");setTimeout(()=>toastEl.classList.remove("show"),1800)}
+  function renderCategories(){
+    const cats=["Todos",...new Set(productsData.map(p=>p.category))];
+    categoriesEl.innerHTML=cats.map(c=>`<button class="chip ${c===activeCategory?'active':''}" data-cat="${c}">${c}</button>`).join("");
+    categoriesEl.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{activeCategory=b.dataset.cat;renderCategories();renderProducts()}));
+  }
+  function renderProducts(){
+    let list=productsData.filter(p=>(activeCategory==="Todos"||p.category===activeCategory)&&(`${p.name} ${p.category} ${p.description}`.toLowerCase().includes(searchEl.value.toLowerCase())));
+    if(sortEl.value==="low")list.sort((a,b)=>a.price-b.price);
+    if(sortEl.value==="high")list.sort((a,b)=>b.price-a.price);
+    productsEl.innerHTML=list.length?list.map(p=>`<article class="product"><div class="product-art">${p.tag?`<span class="tag">${p.tag}</span>`:""}${artSvg[p.art]||artSvg.bag}</div><div class="product-info"><div class="category-label">${p.category}</div><h3>${p.name}</h3><div class="desc">${p.description}</div><div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add" data-add="${p.id}">+ AÑADIR</button></div></div></article>`).join(""):`<div class="empty">No encontramos productos con esa búsqueda.</div>`;
+    productsEl.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(Number(b.dataset.add))));
+  }
+  function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart();toast("Producto añadido al carrito")}
+  function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];renderCart()}
+  function renderCart(){
+    const entries=Object.entries(cart);
+    document.getElementById("cartCount").textContent=entries.reduce((s,[,q])=>s+q,0);
+    document.getElementById("cartItems").innerHTML=entries.length?entries.map(([id,q])=>{const p=productsData.find(x=>x.id===Number(id));return `<div class="cart-row"><div><strong>${p.name}</strong><small>${money(p.price)} por unidad</small><div class="qty"><button data-minus="${id}" aria-label="Reducir cantidad">−</button><span>${q}</span><button data-plus="${id}" aria-label="Aumentar cantidad">+</button><button class="remove" data-remove="${id}">Eliminar</button></div></div><strong>${money(p.price*q)}</strong></div>`}).join(""):`<div class="empty">Tu carrito está vacío.<br>Añade productos para comenzar.</div>`;
+    document.getElementById("cartTotal").textContent=money(entries.reduce((s,[id,q])=>s+productsData.find(p=>p.id===Number(id)).price*q,0));
+    document.getElementById("checkout").disabled=!entries.length;
+    document.querySelectorAll("[data-minus]").forEach(b=>b.onclick=()=>changeQty(Number(b.dataset.minus),-1));
+    document.querySelectorAll("[data-plus]").forEach(b=>b.onclick=()=>changeQty(Number(b.dataset.plus),1));
+    document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{delete cart[Number(b.dataset.remove)];renderCart()});
+  }
+  function openCart(){document.getElementById("overlay").classList.add("open");document.getElementById("drawer").classList.add("open")}
+  function closeCart(){document.getElementById("overlay").classList.remove("open");document.getElementById("drawer").classList.remove("open")}
+  function whatsappUrl(message){return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`}
+  function contactWhatsApp(){if(WHATSAPP_NUMBER==="51900000000"){toast("Configura tu número de WhatsApp en el archivo index.html");return}window.open(whatsappUrl("Hola, quisiera información sobre los productos de S&L. SSTIVEN."),"_blank","noopener")}
+  document.getElementById("openCart").onclick=openCart;
+  document.getElementById("closeCart").onclick=closeCart;
+  document.getElementById("overlay").onclick=closeCart;
+  document.getElementById("checkout").onclick=()=>{
+    if(WHATSAPP_NUMBER==="51900000000"){toast("Primero configura tu número de WhatsApp en index.html");return}
+    const lines=Object.entries(cart).map(([id,q])=>{const p=productsData.find(x=>x.id===Number(id));return `• ${p.name} x${q} — ${money(p.price*q)}`});
+    const total=Object.entries(cart).reduce((s,[id,q])=>s+productsData.find(p=>p.id===Number(id)).price*q,0);
+    const message=`Hola, quiero hacer un pedido en S&L. SSTIVEN:\n\n${lines.join("\n")}\n\n*Total estimado: ${money(total)}*\n\nMi nombre:\nDistrito/ciudad de entrega:\nMétodo de entrega preferido:\n\nPor favor, confirmen stock, costo de envío y forma de pago.`;
+    window.open(whatsappUrl(message),"_blank","noopener");
+  };
+  document.getElementById("quickWhatsApp").onclick=contactWhatsApp;
+  document.getElementById("footerWhatsApp").onclick=e=>{e.preventDefault();contactWhatsApp()};
+  searchEl.addEventListener("input",renderProducts);sortEl.addEventListener("change",renderProducts);
+  document.getElementById("year").textContent=new Date().getFullYear();
+  renderCategories();renderProducts();renderCart();
+</script>
+</body>
+</html>
